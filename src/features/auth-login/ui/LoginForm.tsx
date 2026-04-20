@@ -59,6 +59,12 @@ export function LoginForm() {
         {...form.register('password')}
       />
 
+      {error && (
+        <div role="alert" className="text-error text-start">
+          {error}
+        </div>
+      )}
+
       <Button
         variant="primary"
         isLoading={loading ? 'Вход' : ''}
@@ -67,12 +73,6 @@ export function LoginForm() {
       >
         Войти
       </Button>
-
-      {error && (
-        <div role="alert" className="text-error text-start">
-          {error}
-        </div>
-      )}
     </form>
   );
 }

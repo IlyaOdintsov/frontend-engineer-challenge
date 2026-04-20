@@ -69,6 +69,12 @@ export function RegisterForm() {
         {...form.register('confirmPassword')}
       />
 
+      {error && (
+        <div role="alert" className="text-error text-start">
+          {error}
+        </div>
+      )}
+
       <Button
         variant="primary"
         isLoading={loading ? 'Регистрация' : ''}
@@ -77,12 +83,6 @@ export function RegisterForm() {
       >
         Зарегистрироваться
       </Button>
-
-      {error && (
-        <div role="alert" className="text-error text-start">
-          {error}
-        </div>
-      )}
     </form>
   );
 }

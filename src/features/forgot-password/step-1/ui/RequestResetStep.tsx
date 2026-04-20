@@ -41,6 +41,12 @@ function RequestResetForm({ onSuccess }: { onSuccess: () => void }) {
         {...form.register('email')}
       />
 
+      {error && (
+        <div role="alert" className="text-error text-start">
+          {error}
+        </div>
+      )}
+
       <Button
         variant="secondary"
         isLoading={loading ? 'Восстановление' : ''}
@@ -49,12 +55,6 @@ function RequestResetForm({ onSuccess }: { onSuccess: () => void }) {
       >
         Восстановить пароль
       </Button>
-
-      {error && (
-        <div role="alert" className="text-error text-start">
-          {error}
-        </div>
-      )}
     </form>
   );
 }

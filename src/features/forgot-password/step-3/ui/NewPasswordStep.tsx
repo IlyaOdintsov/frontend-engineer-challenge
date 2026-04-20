@@ -87,6 +87,12 @@ function NewPasswordForm({
         {...form.register('confirmPassword')}
       />
 
+      {error && (
+        <div role="alert" className="text-error text-start">
+          {error}
+        </div>
+      )}
+
       <Button
         variant="primary"
         isLoading={status === 'loading' ? 'Изменение пароля' : ''}
@@ -95,12 +101,6 @@ function NewPasswordForm({
       >
         Изменить пароль
       </Button>
-
-      {error && (
-        <div role="alert" className="text-error text-start">
-          {error}
-        </div>
-      )}
     </form>
   );
 }
