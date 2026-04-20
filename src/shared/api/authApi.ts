@@ -4,6 +4,7 @@ import type {
   LoginInput,
   ForgotInput,
   ResetPasswordInput,
+  EmailType,
 } from '@/entities/auth/schemas';
 
 const api = import.meta.env.VITE_GRAPHQL_URL || 'http://localhost:8000/graphql';
@@ -13,9 +14,35 @@ export type ApiResponse<T> = {
   errors?: Array<{ message: string }>;
 };
 
+export type RegisterResponse = {
+  register: {
+    id: string;
+    email: EmailType;
+    isActive: boolean;
+    createdAt: string;
+  };
+};
+
+export type LoginResponse = {
+  authenticate: {
+    accessToken: string;
+    userId: string;
+  };
+};
+
+export type ForgotResponse = {
+  requestPasswordReset: {
+    ok: boolean;
+    deliveryMode: string;
+    resetUrlPreview: string;
+  };
+};
+
+export type ResetResponse = boolean;
+
 export const register = async (
   input: RegisterInput
-): Promise<ApiResponse<any>> =>
+): Promise<ApiResponse<RegisterResponse>> =>
   request(
     api,
     gql`
@@ -31,7 +58,9 @@ export const register = async (
     { input: { email: input.email, password: input.password } }
   );
 
-export const login = async (input: LoginInput): Promise<ApiResponse<any>> =>
+export const login = async (
+  input: LoginInput
+): Promise<ApiResponse<LoginResponse>> =>
   request(
     api,
     gql`
@@ -47,7 +76,7 @@ export const login = async (input: LoginInput): Promise<ApiResponse<any>> =>
 
 export const forgotPassword = async (
   input: ForgotInput
-): Promise<ApiResponse<any>> =>
+): Promise<ApiResponse<ForgotResponse>> =>
   request(
     api,
     gql`
@@ -64,7 +93,7 @@ export const forgotPassword = async (
 
 export const resetPassword = async (
   input: ResetPasswordInput
-): Promise<ApiResponse<any>> =>
+): Promise<ApiResponse<ResetResponse>> =>
   request(
     api,
     gql`

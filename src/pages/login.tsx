@@ -1,12 +1,31 @@
 import { LoginForm } from '@/features/auth-login/ui/LoginForm';
+import { AuthFormLayout } from '@/features/auth-layout/ui/AuthFormLayout.tsx';
+import { Layout } from '@/shared/ui/Layout.tsx';
+import { Footer } from '@/shared/ui/Footer.tsx';
+import { AuthImage } from '@/features/auth-layout/ui/auth-image.tsx';
+import { Button } from '@/shared/ui/Button.tsx';
+import { useNavigate } from 'react-router-dom';
 
 export function LoginPage() {
+  const navigate = useNavigate();
+
   return (
-    <main className="min-h-screen flex items-center justify-center p-8">
-      <div className="max-w-md w-full space-y-8">
-        <h1 className="text-3xl font-bold text-center">Вход</h1>
-        <LoginForm />
+    <div className="flex">
+      <div className="h-screen bg-background flex flex-col max-w-[40%] w-full">
+        <Layout>
+          <AuthFormLayout title="Войти в систему">
+            <LoginForm />
+            <Button
+              variant="tertiary"
+              onClick={() => navigate('/password-recovery')}
+            >
+              Забыли пароль?
+            </Button>
+          </AuthFormLayout>
+        </Layout>
+        <Footer variant="login" />
       </div>
-    </main>
+      <AuthImage />
+    </div>
   );
 }

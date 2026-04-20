@@ -1,28 +1,36 @@
 @import "tailwindcss";
 
-@layer base {
-    :root {
-        --background: #FFFFFF;
-        --text: #6b6375;
-        --text-h: #08060d;
-        --bg: #fff;
-        --border: #e5e4e7;
-        --accent: #aa3bff;
-    }
 
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --text: #9ca3af;
-            --text-h: #f3f4f6;
-            --bg: #16171d;
-            --border: #2e303a;
-            --accent: #c084fc;
-        }
-    }
+:root {
+    --background: #FFFFFF;
+    --secondary-background: #EBEFF4;
+    --text: #1F1F27;
+    --text-button: #FFFFFF;
+    --text-primary: #31A0F0;
+    --text-secondary: #81869A;
+    --text-tertiary: #C0C2CB;
+    --border: #1F1F27;
+    --accent: #aa3bff;
+    --error: #D23939FF;
+    --primary: #31A0F0;
+    --secondary: #31A0F019
+
+
 }
 
 @theme {
-    --color-background: var(--background)
+    --color-background: var(--background);
+    --color-secondary-background: var(--secondary-background);
+    --color-text: var(--text);
+    --color-text-button: var(--text-button);
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-tertiary: var(--text-tertiary);
+    --color-error: var(--error);
+    --color-border: var(--border);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+
 }
 
 *,
@@ -35,10 +43,6 @@ body {
     margin: 0;
     font-family: system-ui, sans-serif;
     color: var(--text);
-    background: var(--bg);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -46,13 +50,6 @@ body {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0;
+    color: var(--text);
 }
 
-h1, h2, h3 {
-    color: var(--text-h);
-    font-weight: 500;
-    margin: 0 0 1rem 0;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2rem); }

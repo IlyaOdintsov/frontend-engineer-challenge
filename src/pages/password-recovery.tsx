@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { RequestResetForm } from '@/features/forgot-password/step-1/ui/RequestResetForm';
+import { RequestResetStep } from '@/features/forgot-password/step-1/ui/RequestResetStep.tsx';
 import { CheckEmailScreen } from '@/features/forgot-password/step-2/ui/CheckEmailScreen.tsx';
-import { NewPasswordForm } from '@/features/forgot-password/step-3/ui/NewPasswordForm';
+import { NewPasswordStep } from '@/features/forgot-password/step-3/ui/NewPasswordStep.tsx';
 import { useSearchParams } from 'react-router-dom';
 import { Layout } from '@/shared/ui/Layout.tsx';
 
@@ -11,38 +11,18 @@ export function PasswordRecoveryPage() {
   const [step, setStep] = useState<'request' | 'check-email' | 'new-password'>(
     token ? 'new-password' : 'request'
   );
-  const [email, setEmail] = useState('');
-
-  if (step === 'new-password' && token) {
-    return (
-      <Layout>
-        <div className="min-h-screen flex items-center justify-center p-8">
-          <NewPasswordForm />
-        </div>
-      </Layout>
-    );
-  }
-
-  if (step === 'check-email') {
-    return (
-      <Layout>
-        <div className="min-h-screen flex items-center justify-center p-8">
-          <CheckEmailScreen email={email} />
-        </div>
-      </Layout>
-    );
-  }
 
   return (
-    <Layout>
-      <div className="min-h-screen flex items-center justify-center p-8">
-        <RequestResetForm
-          onSuccess={(userEmail) => {
-            setEmail(userEmail);
-            setStep('check-email');
-          }}
-        />
-      </div>
-    </Layout>
+    <div className="h-screen bg-background">
+      <Layout>
+        {step === 'new-password' && token ? (
+          <NewPasswordStep />
+        ) : step === 'check-email' ? (
+          <CheckEmailScreen />
+        ) : (
+          <RequestResetStep onSuccess={() => setStep('check-email')} />
+        )}
+      </Layout>
+    </div>
   );
 }
