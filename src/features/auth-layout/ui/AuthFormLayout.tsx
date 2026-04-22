@@ -20,11 +20,11 @@ export function AuthFormLayout({
 
   return (
     <div
-      className={`w-full h-full flex flex-col items-center justify-center ${sizes[size]}`}
+      className={`w-full h-full flex flex-col items-center justify-center px-10 md:p-0 ${sizes[size]}`}
     >
-      <div className="w-full space-y-6 text-center">
+      <div className="w-full space-y-3 md:space-y-6 text-center">
         {title && (
-          <h1 className="font-medium text-[32px] leading-[1.2] text-text text-start">
+          <h1 className="font-medium text-[24px] md:text-[32px] leading-[1.2] text-text text-start">
             {title}
           </h1>
         )}
@@ -34,7 +34,7 @@ export function AuthFormLayout({
           </p>
         )}
 
-        <div className="space-y-8">{children}</div>
+        <div className="space-y-4 md:space-y-8">{children}</div>
       </div>
     </div>
   );

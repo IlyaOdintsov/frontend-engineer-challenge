@@ -10,6 +10,7 @@ import { FormInput } from '@/shared/ui/FormInput.tsx';
 import { Button } from '@/shared/ui/Button.tsx';
 import { InvalidScreen } from '@/features/forgot-password/step-4/ui/InvalidScreen.tsx';
 import { SuccessScreen } from '@/features/forgot-password/step-4/ui/SuccessScreen.tsx';
+import { useIsMobile } from '@/shared/hooks/useIsMobile.tsx';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -62,7 +63,7 @@ function NewPasswordForm({
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      className="space-y-6"
+      className="space-y-3 md:space-y-6"
       autoComplete="off"
     >
       <FormInput
@@ -106,6 +107,7 @@ function NewPasswordForm({
 }
 
 export function NewPasswordStep() {
+  const isMobile = useIsMobile();
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token') || '';
 
@@ -118,7 +120,11 @@ export function NewPasswordStep() {
   return (
     <AuthFormLayout
       title="Задайте пароль"
-      subtitle="Напишите новый пароль, который будете использовать для входа"
+      subtitle={
+        isMobile
+          ? 'Напишите новый пароль'
+          : 'Напишите новый пароль, который будете использовать для входа'
+      }
       size="lg"
     >
       <NewPasswordForm token={token} status={status} setStatus={setStatus} />

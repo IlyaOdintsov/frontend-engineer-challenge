@@ -34,7 +34,7 @@ export function RegisterForm() {
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      className="space-y-6"
+      className="space-y-3 md:space-y-6"
       autoComplete="off"
     >
       <FormInput

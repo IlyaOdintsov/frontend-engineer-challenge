@@ -9,7 +9,7 @@ export const Footer = ({ variant = 'login' }: FooterProps) => {
   const navigate = useNavigate();
 
   return (
-    <footer className="w-full py-8 text-sm border-t border-border/[0.08] text-text-secondary flex justify-center items-center gap-[5px]">
+    <footer className="w-full py-6 md:py-8 text-sm border-t border-border/[0.08] text-text-secondary flex justify-center items-center gap-[5px]">
       <span>
         {variant === 'login' ? 'Еще не зарегистрированы?' : 'Уже есть аккаунт?'}
       </span>

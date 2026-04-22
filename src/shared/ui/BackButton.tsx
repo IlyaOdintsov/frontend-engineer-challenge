@@ -17,7 +17,11 @@ export function BackButton({ to }: BackButtonProps) {
   };
 
   return (
-    <button type="button" onClick={onClick} className="cursor-pointer">
+    <button
+      type="button"
+      onClick={onClick}
+      className="cursor-pointer w-5 md:w-6"
+    >
       <img src={backArrow} alt="back button" />
     </button>
   );

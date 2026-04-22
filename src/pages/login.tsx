@@ -11,7 +11,7 @@ export function LoginPage() {
 
   return (
     <div className="flex">
-      <div className="h-screen bg-background flex flex-col max-w-[40%] w-full">
+      <div className="h-screen bg-background flex flex-col md:max-w-[40%] w-full">
         <Layout>
           <AuthFormLayout title="Войти в систему">
             <LoginForm />
@@ -25,7 +25,7 @@ export function LoginPage() {
         </Layout>
         <Footer variant="login" />
       </div>
-      <AuthImage />
+      <AuthImage className="hidden md:flex" />
     </div>
   );
 }
