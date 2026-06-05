@@ -43,6 +43,7 @@ export function LoginForm() {
         label="E-mail"
         placeholder="Введите e-mail"
         type="text"
+        autoComplete="email"
         error={form.formState.errors.email?.message}
         value={emailValue}
         {...form.register('email')}
@@ -53,6 +54,7 @@ export function LoginForm() {
         label="Пароль"
         placeholder="Введите пароль"
         type="password"
+        autoComplete="current-password"
         showPasswordToggle={true}
         value={passwordValue}
         error={form.formState.errors.password?.message}

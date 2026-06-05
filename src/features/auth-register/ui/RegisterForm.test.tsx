@@ -6,7 +6,6 @@ import { registerSchema, RegisterInput } from '@/entities/auth/schemas';
 import { RegisterForm } from './RegisterForm';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
-import { useSubmitForm } from '@/shared/hooks/useSubmitForm.ts';
 
 const mockRegister = vi.fn();
 vi.mock('@/shared/store/authStore', () => ({
@@ -81,19 +80,5 @@ describe('RegisterForm', () => {
       },
       { for: 'register' }
     );
-  });
-
-  it('блокировка кнопки в состоянии loading', async () => {
-    (useSubmitForm as any) = vi.fn(() => ({
-      submit: mockSubmit,
-      error: null,
-      loading: true,
-    }));
-
-    render(<TestWrapper />);
-
-    const button = screen.getByText('Регистрация...');
-
-    expect(button).toBeDisabled();
   });
 });

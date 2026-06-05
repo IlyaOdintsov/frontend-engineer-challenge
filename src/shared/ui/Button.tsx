@@ -1,11 +1,13 @@
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   isLoading?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function Button({

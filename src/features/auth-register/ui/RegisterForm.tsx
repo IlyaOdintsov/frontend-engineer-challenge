@@ -42,6 +42,7 @@ export function RegisterForm() {
         label="E-mail"
         placeholder="Введите e-mail"
         type="text"
+        autoComplete="email"
         error={form.formState.errors.email?.message}
         value={emailValue}
         {...form.register('email')}
@@ -52,6 +53,7 @@ export function RegisterForm() {
         label="Пароль"
         placeholder="Введите пароль"
         type="password"
+        autoComplete="new-password"
         showPasswordToggle={true}
         error={form.formState.errors.password?.message}
         value={passwordValue}
@@ -63,6 +65,7 @@ export function RegisterForm() {
         label="Повторите пароль"
         placeholder="Повторите пароль"
         type="password"
+        autoComplete="off"
         showPasswordToggle={true}
         error={form.formState.errors.confirmPassword?.message}
         value={confirmPassword}

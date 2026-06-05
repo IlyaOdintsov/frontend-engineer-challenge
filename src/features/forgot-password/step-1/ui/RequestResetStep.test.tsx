@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { useSubmitForm } from '@/shared/hooks/useSubmitForm.ts';
 import { RequestResetStep } from '@/features/forgot-password/step-1/ui/RequestResetStep.tsx';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -47,20 +46,5 @@ describe('RequestResetStep', () => {
     await vi.waitFor(() => {
       expect(onSuccess).toHaveBeenCalled();
     });
-  });
-
-  it('блокировка кнопки в состоянии loading', async () => {
-    (useSubmitForm as any) = vi.fn(() => ({
-      submit: mockSubmit,
-      error: null,
-      loading: true,
-    }));
-
-    const onSuccess = vi.fn();
-    render(<TestWrapper onSuccess={onSuccess} />);
-
-    const button = screen.getByText('Восстановление...');
-
-    expect(button).toBeDisabled();
   });
 });

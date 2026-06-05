@@ -48,10 +48,6 @@ export function handleGraphQLError(
     case 'login':
       map = loginErrorMap;
       break;
-    case 'forgot':
-
-    case 'reset':
-    case 'generic':
     default:
       map = genericErrorMap;
       break;

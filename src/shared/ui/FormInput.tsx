@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { InputHTMLAttributes, useState } from 'react';
 import visibleOn from '../assets/icons/visible-on.svg';
 import visibleOff from '../assets/icons/visible-off.svg';
 
@@ -10,7 +10,7 @@ type FormInputProps = {
   type?: 'text' | 'password';
   showPasswordToggle?: boolean;
   value?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export function FormInput({
   id,
